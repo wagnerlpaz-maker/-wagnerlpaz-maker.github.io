@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wagner Paz - Psicólogo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-front {
+            padding: 40px 30px;
+            text-align: center;
+            background: white;
+            position: relative;
+        }
+
+        .card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c9a961 0%, #d4af85 100%);
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container svg {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 14px;
+            color: #c9a961;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #c9a961;
+            margin: 20px auto;
+        }
+
+        .crp {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .approach {
+            font-size: 13px;
+            color: #1a3a52;
+            font-style: italic;
+            margin-bottom: 25px;
+            padding: 12px;
+            background: #f9f7f3;
+            border-left: 3px solid #c9a961;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1a3a52;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: transparent;
+            border: none;
+        }
+
+        .contact-item:hover {
+            background: #f0ebe3;
+            color: #c9a961;
+        }
+
+        .contact-item.whatsapp {
+            color: #25d366;
+        }
+
+        .contact-item.whatsapp:hover {
+            background: #e8f5e9;
+        }
+
+        .contact-item.website {
+            color: #1976d2;
+        }
+
+        .contact-item.website:hover {
+            background: #e3f2fd;
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+
+        .card-back {
+            padding: 40px 30px;
+            background: white;
+            border-top: 4px solid #c9a961;
+        }
+
+        .back-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .clinical-details {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .clinical-intro {
+            font-size: 13px;
+            color: #1a3a52;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .clinical-item {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .clinical-item::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #c9a961;
+        }
+
+        .clinical-item strong {
+            color: #1a3a52;
+        }
+
+        .career-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .card {
+                max-width: 100%;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .card-front,
+            .card-back {
+                padding: 30px 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .card {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Frente do Cartão -->
+        <div class="card">
+            <div class="card-front">
+                <div class="logo-container">
+                    <svg width="150" height="120" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Left speech bubble (larger) -->
+                        <circle cx="90" cy="85" r="60" fill="none" stroke="#c9a961" stroke-width="4"/>
+                        <!-- Left tail -->
+                        <path d="M 55 145 Q 45 165 35 185" fill="none" stroke="#c9a961" stroke-width="4" stroke-linecap="round"/>
+                        
+                        <!-- Right speech bubble (smaller, overlapping) -->
+                        <circle cx="180" cy="100" r="55" fill="none" stroke="#c9a961" stroke-width="4"/>
+                        <!-- Right tail -->
+                        <path d="M 215 155 Q 230 175 245 195" fill="none" stroke="#c9a961" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <div class="name">WAGNER PAZ</div>
+                <div class="title">Psicólogo</div>
+                
+                <div class="divider"></div>
+                
+                <div class="crp">CRP 06-233592</div>
+                
+                <div class="approach">
+                    Terapia Colaborativa
+                </div>
+                
+                <div class="contact-section">
+                    <a href="https://wa.me/5519971708373" class="contact-item whatsapp" target="_blank">
+                        <span class="icon">💬</span>
+                        <span>(19) 97170-8373</span>
+                    </a>
+                    
+                    <a href="https://psicologia-htz5mnh7.manus.space" class="contact-item website" target="_blank">
+                        <span class="icon">🌐</span>
+                        <span>Meu Site</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verso do Cartão -->
+        <div class="card">
+            <div class="card-back">
+                <div class="back-title">Psicoterapia Clínica</div>
+                
+                <div class="clinical-details">
+                    <p class="clinical-intro">Trabalho colaborativo focado em compreender sua história e contexto.</p>
+                    
+                    <div class="clinical-item">
+                        <strong>Ansiedade e depressão:</strong> compreender e reorganizar
+                    </div>
+                    
+                    <div class="clinical-item">
+                        <strong>Estresse crônico e esgotamento:</strong> recuperar energia e equilíbrio
+                    </div>
+                    
+                    <div class="clinical-item">
+                        <strong>Transições de vida e crises:</strong> ressignificar e seguir adiante
+                    </div>
+                    
+                    <div class="clinical-item">
+                        <strong>Conflitos relacionais:</strong> compreender padrões e transformar relações
+                    </div>
+                </div>
+
+                <div class="career-section">
+                    <div class="back-title">Orientação de Carreira</div>
+                    <div class="clinical-details">
+                        <p class="clinical-intro">Suporte estruturado para decisões profissionais alinhadas com seus valores e bem-estar.</p>
+                    </div>
+                </div>
+
+                <div class="footer-text">
+                    Atendimento 100% Online
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
